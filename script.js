@@ -25,26 +25,58 @@ var answers = ["object", "console.log", "document", "stylesheet"];
 init();
 
 function init() {
-  const questionPrompt = document.getElementById("#question");
-  var potentialAnswers = document.querySelector("#option-list");
-  const children = potentialAnswers.querySelectorAll("button");
-  const question = document.querySelector("#question");
+  refresh();
+  if (questionCounter < questions.length) {
+    const questionPrompt = document.getElementById("#question");
+    var potentialAnswers = document.querySelector("#option-list");
+    const children = potentialAnswers.querySelectorAll("button");
+    const question = document.querySelector("#question");
+    console.log(questionCounter);
+    populate(children, question);
+  } else {
+    console.log("Game Ended");
+  }
+}
 
+function populate(choices, question) {
+  questionPopulate(question);
+  choicesPopulate(choices);
+}
+
+function refresh() {
   document.querySelector("#score").textContent = score;
   document.querySelector("#timer").textContent = count;
-  choicesPopulate(children);
-  questionPopulate(question);
 }
 
 function questionPopulate(question) {
   question.innerHTML = questions[questionCounter];
-  questionCounter++;
 }
 
 function choicesPopulate(children) {
   console.log(children);
   for (i = 0; i < children.length; i++) {
-    children[i].innerHTML = options[0][i];
-    console.log(children[i].innerHTML);
+    children[i].innerHTML = options[questionCounter][i];
+  }
+}
+
+//source for more explaination on this https://stackoverflow.com/questions/34896106/attach-event-to-dynamic-elements-in-javascript
+document.addEventListener("click", function (event) {
+  const target = event.target.closest("button");
+  if (target == null) {
+  } else {
+    console.log("clicked " + target.innerHTML);
+    answerCheck(target.innerHTML);
+  }
+});
+function answerCheck(targetHTML) {
+  if (targetHTML == answers[questionCounter]) {
+    questionCounter++;
+    score++;
+    init();
+  } else {
+    console.log("False");
+    questionCounter++;
+    count = count - 15;
+    init();
   }
 }
