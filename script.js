@@ -27,6 +27,7 @@ var answers = ["object", "console.log", "document", "stylesheet"];
 // query Selector works better for grabbing elements https://stackoverflow.com/questions/70910043/javascript-grabbing-button-inside-div-with-id
 // Learned that today ^-^
 init();
+var timer = setInterval(counter, 1000);
 
 //TODO initialize function, however I will be moving this to a "start game" since we shouldn't be reinitializing
 function init() {
@@ -87,9 +88,21 @@ function answerCheck(targetHTML) {
     score++;
     init();
   } else {
-    console.log("False");
     questionCounter++;
-    count = count - 15;
+    if (count > 15) {
+      count = count - 15;
+    } else {
+      count = 0;
+    }
     init();
+  }
+}
+function counter() {
+  if (count > 0) {
+    count--;
+    document.querySelector("#timer").textContent = count;
+  } else {
+    console.log("Game Ended");
+    clearInterval(timer);
   }
 }
