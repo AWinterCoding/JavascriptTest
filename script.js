@@ -1,5 +1,5 @@
 // Variables and selectors for various elements within the HTML
-var count = 60;
+var count = 0;
 var score = 0;
 
 //note this number will always be less than the display for what question you are on.
@@ -31,12 +31,20 @@ var timer = setInterval(counter, 1000);
 document
   .querySelector("#startbutton")
   .addEventListener("click", function (event) {
+    reset();
     document.querySelector("#test").style.display = "inline";
     document.querySelector("#start").style.display = "none";
     quizRun();
   });
-//starts the game
 
+//resets the game
+function reset() {
+  questionCounter = 0;
+  count = 75;
+  score = 0;
+}
+
+//starts the game
 function quizRun() {
   refresh();
   var potentialAnswers = document.querySelector("#option-list");
@@ -123,4 +131,6 @@ function quizEnd() {
   console.log("Game Ended");
   clearInterval(timer);
   document.querySelector("#test").style.display = "none";
+  document.querySelector("#end").style.display = "inline";
+  document.querySelector("#highscore").innerHTML = score;
 }
