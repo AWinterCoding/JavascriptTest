@@ -31,6 +31,7 @@ var timer = setInterval(counter, 1000);
 document
   .querySelector("#startbutton")
   .addEventListener("click", function (event) {
+    event.preventDefault();
     reset();
     document.querySelector("#test").style.display = "inline";
     document.querySelector("#start").style.display = "none";
@@ -67,7 +68,7 @@ function populate(choices, question) {
 //updates both the score and the timer with penalties
 function refresh() {
   document.querySelector("#score").textContent = "Score: " + score;
-  document.querySelector("#timer").textContent = "Count: " + count;
+  document.querySelector("#timer").textContent = "Timer: " + count;
 }
 
 //populates the leading question
@@ -87,15 +88,16 @@ function choicesPopulate(children) {
 //universal button clicker function/assignment to avoid the start button
 var buttons = document.querySelectorAll("button");
 for (i = 0; i < buttons.length; i++) {
-  if (buttons[i].id == "startbutton") {
-  } else {
+  if (buttons[i].className == "button") {
     buttons[i].addEventListener("click", function (event) {
+      event.preventDefault();
       const target = event.target.closest("button");
       if (target == null) {
       } else {
         answerCheck(target.innerHTML);
       }
     });
+  } else {
   }
 }
 
@@ -103,12 +105,12 @@ for (i = 0; i < buttons.length; i++) {
 function answerCheck(targetHTML) {
   if (targetHTML == answers[questionCounter]) {
     questionCounter++;
-    score++;
+    score = score + 15;
     quizRun();
   } else {
     questionCounter++;
     if (count > 15) {
-      count = count - 15;
+      count = count - 10;
     } else {
       count = 0;
     }
@@ -120,7 +122,7 @@ function answerCheck(targetHTML) {
 function counter() {
   if (count > 0) {
     count--;
-    document.querySelector("#timer").textContent = count;
+    document.querySelector("#timer").textContent = "Timer: " + count;
   } else {
     quizEnd();
   }
@@ -134,3 +136,15 @@ function quizEnd() {
   document.querySelector("#end").style.display = "inline";
   document.querySelector("#highscore").innerHTML = score;
 }
+document
+  .querySelector("#submit-button")
+  .addEventListener("click", function (event) {
+    event.preventDefault();
+    console.log("Submit");
+  });
+document
+  .querySelector("#back-button")
+  .addEventListener("click", function (event) {
+    event.preventDefault();
+    console.log("Back");
+  });
