@@ -1,5 +1,6 @@
 body {
   justify-content: center;
+  background-image: url("./assets/background.jpg");
 }
 #test {
   display: none;
@@ -12,20 +13,20 @@ body {
   display: none;
 }
 button {
-  background: pink;
+  background: #f4cfdf;
   border-radius: 5px;
   width: 20%;
   height: 120%;
   padding: 10px;
   margin: auto;
   border-style: dashed;
-  border-color: pink;
+  border-color: #f4cfdf;
   color: white;
   font-size: 20px;
 }
 button:hover {
   background: white;
-  color: pink;
+  color: #f4cfdf;
 }
 section {
   width: 40%;
@@ -34,7 +35,14 @@ section {
 }
 h1 {
   font-size: 45px;
+  margin: auto;
   margin-top: 25%;
+  margin-bottom: 30px;
+  background-color: #9ac8eb;
+  padding: 20px;
+  color: white;
+  border-radius: 15px;
+  width: 50%;
 }
 #startbutton {
   font-size: 24px;
@@ -51,12 +59,27 @@ ul {
 li {
   margin: 10px 0px;
   font-size: 24px;
+  color: white;
+  background-color: #9ac8eb;
+  width: 15%;
+  margin: auto;
+  margin-bottom: 15px;
+  border-radius: 15px;
 }
 h3 {
+  background-color: #9ac8eb;
   font-size: 28px;
+  color: white;
+  width: 40%;
+  margin: auto;
+  margin-top: 5%;
+  border-radius: 25px;
+  margin-bottom: 20px;
+  padding: 15px;
 }
 div {
   font-size: 20px;
+  margin: 30px;
 }
 #timer {
   display: inline;
@@ -70,6 +93,12 @@ div {
 }
 h2 {
   font-size: 38px;
+  color: white;
+  background-color: #f4cfdf;
+  width: 15%;
+  margin: auto;
+  border-radius: 15px;
+  padding: 10px;
 }
 input {
   width: 60px;
@@ -80,4 +109,24 @@ input {
 #highscore {
   display: inline;
   font-size: 36px;
+  padding: 0px 5px 0px 5px;
+}
+p {
+  color: white;
+  font-size: 24px;
+}
+label {
+  font-size: 30px;
+  background-color: #9ac8eb;
+  color: white;
+  border-radius: 15px;
+  padding: 6px;
+  margin: 15px;
+}
+#scoreboard-title {
+  width: 40%;
+  margin: 50px auto 20px auto;
+}
+.button {
+  width: 100%;
 }

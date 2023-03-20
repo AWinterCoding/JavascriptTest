@@ -29,16 +29,17 @@ var keys = [];
 
 // query Selector works better for grabbing elements https://stackoverflow.com/questions/70910043/javascript-grabbing-button-inside-div-with-id
 // Learned that today ^-^
-var timer = setInterval(counter, 1000);
 
 document
   .querySelector("#startbutton")
   .addEventListener("click", function (event) {
+    console.log("click");
     event.preventDefault();
     reset();
     document.querySelector("#test").style.display = "inline";
     document.querySelector("#start").style.display = "none";
     document.querySelector("#highscorelist").style.display = "inline";
+    var timer = setInterval(counter, 1000);
     quizRun();
   });
 
@@ -127,6 +128,7 @@ function counter() {
   if (count > 0) {
     count--;
     document.querySelector("#timer").textContent = "Timer: " + count;
+    console.log("Called");
   } else {
     quizEnd();
   }
@@ -138,6 +140,7 @@ function quizEnd() {
   document.querySelector("#test").style.display = "none";
   document.querySelector("#start").style.display = "none";
   document.querySelector("#end").style.display = "inline";
+  document.querySelector("#scoreboard-section").style.display = "none";
   document.querySelector("#highscore").innerHTML = score;
 }
 
@@ -153,6 +156,7 @@ document
     document.querySelector("#scoreboard-list").style.display = "block";
     document.querySelector("#highscorelist").style.display = "none";
     populateScores();
+    clearInterval(timer);
   });
 
 //back Button
@@ -163,6 +167,8 @@ document
     document.querySelector("#end").style.display = "none";
     document.querySelector("#start").style.display = "block";
     document.querySelector("#highscorelist").style.display = "inline";
+    count = 75;
+    clearInterval(timer);
   });
 
 //populate all the current high scores
@@ -210,4 +216,5 @@ document
     document.querySelector("#highscorelist").style.display = "none";
     document.querySelector("#scoreboard-list").style.display = "block";
     reset();
+    clearInterval(timer);
   });
