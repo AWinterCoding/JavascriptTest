@@ -128,23 +128,29 @@ function counter() {
   }
 }
 
-//End of Quiz
+//end of Quiz
 function quizEnd() {
-  console.log("Game Ended");
   clearInterval(timer);
   document.querySelector("#test").style.display = "none";
   document.querySelector("#end").style.display = "inline";
   document.querySelector("#highscore").innerHTML = score;
 }
+
+//submit Button
 document
   .querySelector("#submit-button")
   .addEventListener("click", function (event) {
     event.preventDefault();
     console.log("Submit");
+    localStorage.setItem(document.getElementById("#initials"), score);
   });
+
+//back Button
 document
   .querySelector("#back-button")
   .addEventListener("click", function (event) {
     event.preventDefault();
     console.log("Back");
+    document.querySelector("#end").style.display = "none";
+    document.querySelector("#start").style.display = "inline";
   });
