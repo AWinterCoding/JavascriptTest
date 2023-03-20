@@ -23,7 +23,7 @@ If you are utilizing the live server option through VS code, I would recommend t
 
 After launching you will be greated with a base page to start the Quiz
 Link to deployed Application:https://awintercoding.github.io/JavascriptTest/
-![alt text](https://github.com/AWinterCoding/)
+![alt text](https://github.com/AWinterCoding/JavascriptTest/blob/main/assets/Website.PNG)
 
 If you click the "start test" button you will begin the test,
 Answering correctly will give points.
