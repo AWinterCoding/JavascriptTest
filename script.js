@@ -28,8 +28,14 @@ var answers = ["object", "console.log", "document", "stylesheet"];
 // Learned that today ^-^
 var timer = setInterval(counter, 1000);
 
+document
+  .querySelector("#startbutton")
+  .addEventListener("click", function (event) {
+    document.querySelector("#test").style.display = "inline";
+    document.querySelector("#start").style.display = "none";
+    quizRun();
+  });
 //starts the game
-quizRun();
 
 function quizRun() {
   refresh();
@@ -70,14 +76,20 @@ function choicesPopulate(children) {
 
 //source for more explaination on this https://stackoverflow.com/questions/34896106/attach-event-to-dynamic-elements-in-javascript
 
-//universal button clicker function
-document.addEventListener("click", function (event) {
-  const target = event.target.closest("button");
-  if (target == null) {
+//universal button clicker function/assignment to avoid the start button
+var buttons = document.querySelectorAll("button");
+for (i = 0; i < buttons.length; i++) {
+  if (buttons[i].id == "startbutton") {
   } else {
-    answerCheck(target.innerHTML);
+    buttons[i].addEventListener("click", function (event) {
+      const target = event.target.closest("button");
+      if (target == null) {
+      } else {
+        answerCheck(target.innerHTML);
+      }
+    });
   }
-});
+}
 
 //answer checker for each answer
 function answerCheck(targetHTML) {
@@ -110,8 +122,5 @@ function counter() {
 function quizEnd() {
   console.log("Game Ended");
   clearInterval(timer);
-  document.querySelector("#option-list").style.display = "none";
-  document.querySelector("#timer").style.display = "none";
-  document.querySelector("#score").style.display = "none";
-  document.querySelector("#question").style.display = "none";
+  document.querySelector("#test").style.display = "none";
 }
