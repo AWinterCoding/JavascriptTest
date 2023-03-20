@@ -38,6 +38,7 @@ document
     reset();
     document.querySelector("#test").style.display = "inline";
     document.querySelector("#start").style.display = "none";
+    document.querySelector("#highscorelist").style.display = "inline";
     quizRun();
   });
 
@@ -149,6 +150,7 @@ document
     keys[0];
     document.querySelector("#end").style.display = "none";
     document.querySelector("#scoreboard-section").style.display = "inline";
+    document.querySelector("#highscorelist").style.display = "none";
     populateScores();
   });
 
@@ -159,6 +161,7 @@ document
     event.preventDefault();
     document.querySelector("#end").style.display = "none";
     document.querySelector("#start").style.display = "inline";
+    document.querySelector("#highscorelist").style.display = "inline";
   });
 
 //populate all the current high scores
@@ -183,3 +186,25 @@ document.querySelector("#clear").addEventListener("click", function (event) {
   ul.replaceChildren();
   populateScores();
 });
+
+//handler for the scoreboard back button to navigate away from the scoreboards
+
+document
+  .querySelector("#main-return")
+  .addEventListener("click", function (event) {
+    document.querySelector("#scoreboard-section").style.display = "none";
+    document.querySelector("#start").style.display = "inline";
+    document.querySelector("#highscorelist").style.display = "inline";
+  });
+
+//button to navigate to the scoreboard
+document
+  .querySelector("#highscorelist")
+  .addEventListener("click", function (event) {
+    document.querySelector("#scoreboard-section").style.display = "inline";
+    document.querySelector("#start").style.display = "none";
+    document.querySelector("#test").style.display = "none";
+    document.querySelector("#end").style.display = "none";
+    document.querySelector("#highscorelist").style.display = "none";
+    reset();
+  });
