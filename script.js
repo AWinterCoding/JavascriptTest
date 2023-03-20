@@ -160,7 +160,7 @@ document
   .addEventListener("click", function (event) {
     event.preventDefault();
     document.querySelector("#end").style.display = "none";
-    document.querySelector("#start").style.display = "inline";
+    document.querySelector("#start").style.display = "block";
     document.querySelector("#highscorelist").style.display = "inline";
   });
 
@@ -171,7 +171,7 @@ function populateScores() {
     var listItem = document.createElement("li");
     console.log(localStorage.getItem(keys[i]));
     listItem.textContent = keys[i] + "   " + localStorage.getItem(keys[i]);
-    listItem.style.display = "inline";
+    listItem.style.display = "block";
     scores.appendChild(listItem);
     console.log(scores);
   }
