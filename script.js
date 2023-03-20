@@ -26,21 +26,21 @@ var answers = ["object", "console.log", "document", "stylesheet"];
 
 // query Selector works better for grabbing elements https://stackoverflow.com/questions/70910043/javascript-grabbing-button-inside-div-with-id
 // Learned that today ^-^
-init();
 var timer = setInterval(counter, 1000);
 
-//TODO initialize function, however I will be moving this to a "start game" since we shouldn't be reinitializing
-function init() {
+//starts the game
+quizRun();
+
+function quizRun() {
   refresh();
+  var potentialAnswers = document.querySelector("#option-list");
+  const children = potentialAnswers.querySelectorAll("button");
+  const question = document.querySelector("#question");
   if (questionCounter < questions.length) {
-    const questionPrompt = document.getElementById("#question");
-    var potentialAnswers = document.querySelector("#option-list");
-    const children = potentialAnswers.querySelectorAll("button");
-    const question = document.querySelector("#question");
     console.log(questionCounter);
     populate(children, question);
   } else {
-    console.log("Game Ended");
+    quizEnd();
   }
 }
 
@@ -63,7 +63,6 @@ function questionPopulate(question) {
 
 //populates all choices
 function choicesPopulate(children) {
-  console.log(children);
   for (i = 0; i < children.length; i++) {
     children[i].innerHTML = options[questionCounter][i];
   }
@@ -76,7 +75,6 @@ document.addEventListener("click", function (event) {
   const target = event.target.closest("button");
   if (target == null) {
   } else {
-    console.log("clicked " + target.innerHTML);
     answerCheck(target.innerHTML);
   }
 });
@@ -86,7 +84,7 @@ function answerCheck(targetHTML) {
   if (targetHTML == answers[questionCounter]) {
     questionCounter++;
     score++;
-    init();
+    quizRun();
   } else {
     questionCounter++;
     if (count > 15) {
@@ -94,15 +92,26 @@ function answerCheck(targetHTML) {
     } else {
       count = 0;
     }
-    init();
+    quizRun();
   }
 }
+
+//timer function
 function counter() {
   if (count > 0) {
     count--;
     document.querySelector("#timer").textContent = count;
   } else {
-    console.log("Game Ended");
-    clearInterval(timer);
+    quizEnd();
   }
+}
+
+//End of Quiz
+function quizEnd() {
+  console.log("Game Ended");
+  clearInterval(timer);
+  document.querySelector("#option-list").style.display = "none";
+  document.querySelector("#timer").style.display = "none";
+  document.querySelector("#score").style.display = "none";
+  document.querySelector("#question").style.display = "none";
 }
