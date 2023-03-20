@@ -24,6 +24,9 @@ var options = [
 //all answers to questions
 var answers = ["object", "console.log", "document", "stylesheet"];
 
+//keys for high scores
+var keys = [];
+
 // query Selector works better for grabbing elements https://stackoverflow.com/questions/70910043/javascript-grabbing-button-inside-div-with-id
 // Learned that today ^-^
 var timer = setInterval(counter, 1000);
@@ -141,8 +144,12 @@ document
   .querySelector("#submit-button")
   .addEventListener("click", function (event) {
     event.preventDefault();
-    console.log("Submit");
-    localStorage.setItem(document.getElementById("#initials"), score);
+    localStorage.setItem(document.querySelector("#initials").value, score);
+    keys.push(document.querySelector("#initials").value);
+    keys[0];
+    document.querySelector("#end").style.display = "none";
+    document.querySelector("#scoreboard-section").style.display = "inline";
+    populateScores();
   });
 
 //back Button
@@ -150,7 +157,29 @@ document
   .querySelector("#back-button")
   .addEventListener("click", function (event) {
     event.preventDefault();
-    console.log("Back");
     document.querySelector("#end").style.display = "none";
     document.querySelector("#start").style.display = "inline";
   });
+
+//populate all the current high scores
+function populateScores() {
+  var scores = document.querySelector("#scoreboard-list");
+  for (i = 0; i < keys.length; i++) {
+    var listItem = document.createElement("li");
+    console.log(localStorage.getItem(keys[i]));
+    localStorage.getItem("AQ");
+    listItem.textContent = keys[i] + "   " + localStorage.getItem(keys[i]);
+    scores.appendChild(listItem);
+  }
+}
+
+//handler for the clear button and clear functionality
+//source goes to https://stackoverflow.com/questions/14039374/clear-dynamically-created-ul
+document.querySelector("#clear").addEventListener("click", function (event) {
+  keys = [];
+  localStorage.clear();
+  ul = document.querySelector("#scoreboard-list");
+
+  ul.replaceChildren();
+  populateScores();
+});
