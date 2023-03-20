@@ -150,6 +150,7 @@ document
     keys.push(document.querySelector("#initials").value);
     document.querySelector("#end").style.display = "none";
     document.querySelector("#scoreboard-section").style.display = "block";
+    document.querySelector("#scoreboard-list").style.display = "block";
     document.querySelector("#highscorelist").style.display = "none";
     populateScores();
   });
@@ -166,15 +167,12 @@ document
 
 //populate all the current high scores
 function populateScores() {
-  for (i = 0; i < keys.length; i++) {
-    var scores = document.querySelector("#scoreboard-list");
-    var listItem = document.createElement("li");
-    console.log(localStorage.getItem(keys[i]));
-    listItem.textContent = keys[i] + "   " + localStorage.getItem(keys[i]);
-    listItem.style.display = "block";
-    scores.appendChild(listItem);
-    console.log(scores);
-  }
+  var scores = document.querySelector("#scoreboard-list");
+  var listItem = document.createElement("li");
+  listItem.textContent =
+    keys[keys.length - 1] + "   " + localStorage.getItem(keys[keys.length - 1]);
+  listItem.style.display = "block";
+  scores.appendChild(listItem);
 }
 
 //handler for the clear button and clear functionality
