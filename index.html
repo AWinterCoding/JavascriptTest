@@ -11,8 +11,10 @@
   </section>
   <section id="test">
     <h3 id="question">Question</h3>
-    <p id="timer">Timer:</p>
-    <p id="score">Score:</p>
+    <div>
+      <p id="timer">Timer:</p>
+      <p id="score">Score:</p>
+    </div>
     <ul id="option-list">
       <li>
         <button class="button">Choice 1</button>
@@ -25,10 +27,14 @@
   <section id="end">
     <h2>Quiz Complete!</h2>
     <form>
-      <label for="highscore">Your score was: </label>
-      <h3 id="highscore"></h3>
-      <label for="initials">Please Enter your Initials Here</label>
-      <input type="text" id="initials" />
+      <div>
+        <label for="highscore">Your score was: </label>
+        <h3 id="highscore"></h3>
+      </div>
+      <div>
+        <label for="initials">Please Enter your Initials Here: </label>
+        <input type="text" id="initials" />
+      </div>
       <button id="submit-button">Submit</button>
       <button id="back-button">Back</button>
     </form>

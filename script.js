@@ -136,6 +136,7 @@ function counter() {
 function quizEnd() {
   clearInterval(timer);
   document.querySelector("#test").style.display = "none";
+  document.querySelector("#start").style.display = "none";
   document.querySelector("#end").style.display = "inline";
   document.querySelector("#highscore").innerHTML = score;
 }
@@ -193,8 +194,9 @@ document
   .querySelector("#main-return")
   .addEventListener("click", function (event) {
     document.querySelector("#scoreboard-section").style.display = "none";
-    document.querySelector("#start").style.display = "inline";
+    document.querySelector("#start").style.display = "block";
     document.querySelector("#highscorelist").style.display = "inline";
+    document.querySelector("#scoreboard-list").style.display = "none";
   });
 
 //button to navigate to the scoreboard

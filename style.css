@@ -1,3 +1,6 @@
+body {
+  justify-content: center;
+}
 #test {
   display: none;
 }
@@ -6,4 +9,69 @@
 }
 #scoreboard-section {
   display: none;
+}
+button {
+  background: pink;
+  border-radius: 5px;
+  width: 20%;
+  height: 120%;
+  padding: 10px;
+  margin: auto;
+  border-style: dashed;
+  border-color: pink;
+  color: white;
+  font-size: 20px;
+}
+button:hover {
+  background: white;
+  color: pink;
+}
+section {
+  width: 40%;
+  text-align: center;
+  margin: auto;
+}
+h1 {
+  font-size: 45px;
+  margin-top: 25%;
+}
+#startbutton {
+  font-size: 24px;
+}
+#highscorelist {
+  font-size: 20px;
+  width: 10%;
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+li {
+  margin: 10px 0px;
+}
+h3 {
+  font-size: 28px;
+}
+div {
+  font-size: 20px;
+}
+#timer {
+  display: inline;
+  position: relative;
+  right: 6%;
+}
+#score {
+  display: inline;
+  position: relative;
+  left: 6%;
+}
+h2 {
+  font-size: 38px;
+}
+input {
+  width: 60px;
+  height: 20px;
+  font-size: 20px;
+  margin-bottom: 20px;
 }
