@@ -1,5 +1,5 @@
 // Variables and selectors for various elements within the HTML
-var count = 0;
+var count = 75;
 var score = 0;
 
 //note this number will always be less than the display for what question you are on.
@@ -66,8 +66,8 @@ function populate(choices, question) {
 
 //updates both the score and the timer with penalties
 function refresh() {
-  document.querySelector("#score").textContent = score;
-  document.querySelector("#timer").textContent = count;
+  document.querySelector("#score").textContent = "Score: " + score;
+  document.querySelector("#timer").textContent = "Count: " + count;
 }
 
 //populates the leading question
