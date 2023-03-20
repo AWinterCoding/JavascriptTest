@@ -148,9 +148,8 @@ document
     event.preventDefault();
     localStorage.setItem(document.querySelector("#initials").value, score);
     keys.push(document.querySelector("#initials").value);
-    keys[0];
     document.querySelector("#end").style.display = "none";
-    document.querySelector("#scoreboard-section").style.display = "inline";
+    document.querySelector("#scoreboard-section").style.display = "block";
     document.querySelector("#highscorelist").style.display = "none";
     populateScores();
   });
@@ -167,13 +166,14 @@ document
 
 //populate all the current high scores
 function populateScores() {
-  var scores = document.querySelector("#scoreboard-list");
   for (i = 0; i < keys.length; i++) {
+    var scores = document.querySelector("#scoreboard-list");
     var listItem = document.createElement("li");
     console.log(localStorage.getItem(keys[i]));
-    localStorage.getItem("AQ");
     listItem.textContent = keys[i] + "   " + localStorage.getItem(keys[i]);
+    listItem.style.display = "inline";
     scores.appendChild(listItem);
+    console.log(scores);
   }
 }
 
@@ -193,6 +193,7 @@ document.querySelector("#clear").addEventListener("click", function (event) {
 document
   .querySelector("#main-return")
   .addEventListener("click", function (event) {
+    event.preventDefault();
     document.querySelector("#scoreboard-section").style.display = "none";
     document.querySelector("#start").style.display = "block";
     document.querySelector("#highscorelist").style.display = "inline";
@@ -203,10 +204,12 @@ document
 document
   .querySelector("#highscorelist")
   .addEventListener("click", function (event) {
-    document.querySelector("#scoreboard-section").style.display = "inline";
+    event.preventDefault();
+    document.querySelector("#scoreboard-section").style.display = "block";
     document.querySelector("#start").style.display = "none";
     document.querySelector("#test").style.display = "none";
     document.querySelector("#end").style.display = "none";
     document.querySelector("#highscorelist").style.display = "none";
+    document.querySelector("#scoreboard-list").style.display = "block";
     reset();
   });

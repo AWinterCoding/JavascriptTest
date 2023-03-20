@@ -6,6 +6,7 @@ body {
 }
 #end {
   display: none;
+  font-size: 36px;
 }
 #scoreboard-section {
   display: none;
@@ -49,6 +50,7 @@ ul {
 }
 li {
   margin: 10px 0px;
+  font-size: 24px;
 }
 h3 {
   font-size: 28px;
@@ -72,6 +74,10 @@ h2 {
 input {
   width: 60px;
   height: 20px;
-  font-size: 20px;
+  font-size: 28px;
   margin-bottom: 20px;
+}
+#highscore {
+  display: inline;
+  font-size: 36px;
 }
