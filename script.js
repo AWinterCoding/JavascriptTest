@@ -195,7 +195,6 @@ document.querySelector("#clear").addEventListener("click", function (event) {
   ul = document.querySelector("#scoreboard-list");
 
   ul.replaceChildren();
-  populateScores();
 });
 
 //handler for the scoreboard back button to navigate away from the scoreboards
