@@ -29,7 +29,6 @@ var keys = [];
 
 // query Selector works better for grabbing elements https://stackoverflow.com/questions/70910043/javascript-grabbing-button-inside-div-with-id
 // Learned that today ^-^
-
 document
   .querySelector("#startbutton")
   .addEventListener("click", function (event) {
@@ -39,7 +38,16 @@ document
     document.querySelector("#test").style.display = "inline";
     document.querySelector("#start").style.display = "none";
     document.querySelector("#highscorelist").style.display = "inline";
-    var timer = setInterval(counter, 1000);
+    var timer = setInterval(function counter() {
+      if (count <= 0) {
+        quizEnd();
+        clearInterval(timer);
+      } else {
+        count--;
+        document.querySelector("#timer").textContent = "Timer: " + count;
+        console.log("Called");
+      }
+    }, 1000);
     quizRun();
   });
 
@@ -124,19 +132,19 @@ function answerCheck(targetHTML) {
 }
 
 //timer function
-function counter() {
-  if (count > 0) {
-    count--;
-    document.querySelector("#timer").textContent = "Timer: " + count;
-    console.log("Called");
-  } else {
-    quizEnd();
-  }
-}
+// function counter() {
+//   if (count > 0) {
+//     count--;
+//     document.querySelector("#timer").textContent = "Timer: " + count;
+//     console.log("Called");
+//   } else {
+//     quizEnd();
+//   }
+// }
 
 //end of Quiz
 function quizEnd() {
-  clearInterval(timer);
+  count = 0;
   document.querySelector("#test").style.display = "none";
   document.querySelector("#start").style.display = "none";
   document.querySelector("#end").style.display = "inline";
@@ -156,7 +164,6 @@ document
     document.querySelector("#scoreboard-list").style.display = "block";
     document.querySelector("#highscorelist").style.display = "none";
     populateScores();
-    clearInterval(timer);
   });
 
 //back Button
@@ -168,7 +175,6 @@ document
     document.querySelector("#start").style.display = "block";
     document.querySelector("#highscorelist").style.display = "inline";
     count = 75;
-    clearInterval(timer);
   });
 
 //populate all the current high scores
@@ -216,5 +222,4 @@ document
     document.querySelector("#highscorelist").style.display = "none";
     document.querySelector("#scoreboard-list").style.display = "block";
     reset();
-    clearInterval(timer);
   });
